@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'root']);
+
+Route::get('/admin', [Admin\DashboardController::class, 'index'])->middleware(['auth'])->name('admin.dashboard');
 
 Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index']);
 //Language Translation
