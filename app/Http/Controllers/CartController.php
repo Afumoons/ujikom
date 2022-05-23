@@ -24,7 +24,10 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+        return view('cart', [
+            'title' => 'Cart',
+            'cart' => $this->cart,
+        ]);
     }
 
     /**

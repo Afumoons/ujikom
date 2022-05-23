@@ -131,10 +131,11 @@
             </div>
 
             <div class="dropdown d-inline-block">
-                <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
+                <a href="{{ route('cart') }}"
+                    class="btn header-item noti-icon waves-effect d-flex align-items-center">
                     <i class="uil-shopping-cart-alt
                     "></i>
-                </button>
+                </a>
             </div>
 
             <div class="dropdown d-inline-block">
@@ -143,7 +144,7 @@
                     <img class="rounded-circle header-profile-user"
                         src="{{ URL::asset('/assets/images/users/avatar-4.jpg') }}" alt="Header Avatar">
                     <span
-                        class="d-none d-xl-inline-block ms-1 fw-medium font-size-15">{{ Str::ucfirst(Auth::user()->name) }}</span>
+                        class="d-none d-xl-inline-block ms-1 fw-medium font-size-15">{{ Str::ucfirst(Auth::user()->name ?? 'Guest') }}</span>
                     <i class="uil-angle-down d-none d-xl-inline-block font-size-15"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
