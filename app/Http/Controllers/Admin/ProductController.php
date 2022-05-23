@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Product;
+use App\Models\ProductCategory;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreProductRequest;
-use App\Http\Requests\UpdateProductRequest;
+use App\Http\Requests\Admin\StoreProductRequest;
+use App\Http\Requests\Admin\UpdateProductRequest;
 
 class ProductController extends Controller
 {
@@ -30,7 +31,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $productCategories = ProductCategory::get();
+        return view('admin.product.create', [
+            'title' => 'Create Product',
+            'productCategories' => $productCategories,
+        ]);
     }
 
     /**
@@ -41,7 +46,11 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        //
+        $validatedData = $request->validated();
+
+        Product::create($validatedData);
+
+        return redirect()->route('admin.product.index')->with('success', 'Product has been created.');
     }
 
     /**
