@@ -53,16 +53,6 @@ class ProductController extends Controller
         return redirect()->route('admin.product.index')->with('success', 'Product has been created.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Product $product)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -72,7 +62,12 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $productCategories = ProductCategory::get();
+        return view('admin.product.edit', [
+            'title' => 'Edit Product',
+            'product' => $product,
+            'productCategories' => $productCategories,
+        ]);
     }
 
     /**
@@ -84,7 +79,11 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        $validatedData = $request->validated();
+
+        $product->update($validatedData);
+
+        return redirect()->route('admin.product.edit', $product->id)->with('success', 'Product has been updated.');
     }
 
     /**
