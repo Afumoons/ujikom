@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
+use App\Models\ProductCategory;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
@@ -58,8 +59,9 @@ class HomeController extends Controller
     }
     public function shop()
     {
+        $productCategories = ProductCategory::all();
         $products = Product::get();
-        return view('shop', compact('products'));
+        return view('shop', compact('products', 'productCategories'));
     }
     public function shop_detail($slug)
     {
