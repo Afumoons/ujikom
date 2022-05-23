@@ -90,8 +90,13 @@ class ProductCategoryController extends Controller
      * @param  \App\Models\ProductCategory  $productCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductCategory $productCategory)
+    public function destroy($productCategory)
     {
-        //
+        // find product category then delete
+        $productCategory = ProductCategory::findOrFail($productCategory);
+        $productCategory->delete();
+
+        //return to index
+        return redirect()->route('admin.product-category.index')->with('success', 'Product Category has been deleted.');
     }
 }
