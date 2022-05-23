@@ -19,8 +19,9 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->withoutMiddleware('auth');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->withoutMiddleware('auth')->name('root');
 
+Route::get('index', [Admin\DashboardController::class, 'index'])->middleware(['auth'])->name('admin.dashboard');
 Route::get('/admin', [Admin\DashboardController::class, 'index'])->middleware(['auth'])->name('admin.dashboard');
 Route::get('shop', [App\Http\Controllers\HomeController::class, 'shop'])->withoutMiddleware('auth')->name('shop');
 Route::get('shop/{slug}', [App\Http\Controllers\HomeController::class, 'shop_detail'])->withoutMiddleware('auth')->name('shop-detail');
