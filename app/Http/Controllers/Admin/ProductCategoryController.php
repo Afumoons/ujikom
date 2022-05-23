@@ -16,7 +16,11 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $productCategories = ProductCategory::get();
+        return view('admin.productCategory.index', [
+            'title' => 'Dashboard Pengguna',
+            'productCategories' => $productCategories,
+        ]);
     }
 
     /**
