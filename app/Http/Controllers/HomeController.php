@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\App;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
@@ -56,6 +58,12 @@ class HomeController extends Controller
     }
     public function shop()
     {
-        dd('duar');
+        $products = Product::get();
+        return view('shop', compact('products'));
+    }
+    public function shop_detail($slug)
+    {
+        $product = Product::where('slug', $slug)->first();
+        return view('shop-detail', compact('product'));
     }
 }
