@@ -18,7 +18,7 @@ class UserController extends Controller
     {
         $users = User::get();
         return view('admin.user.index', [
-            'title' => 'Dashboard Pengguna',
+            'title' => 'User Dashboard',
             'users' => $users,
         ]);
     }
@@ -32,7 +32,7 @@ class UserController extends Controller
     {
         $user_roles = User::USER_ROLES;
         return view('admin.user.create', [
-            'title' => 'Tambah Pengguna',
+            'title' => 'Create User',
             'user_roles' => $user_roles,
         ]);
     }
@@ -70,7 +70,7 @@ class UserController extends Controller
         $user_roles = User::USER_ROLES;
         $user = User::findOrFail($user);
         return view('admin.user.edit', [
-            'title' => 'Atur Pengguna',
+            'title' => 'Edit User',
             'user' => $user,
             'user_roles' => $user_roles,
         ]);

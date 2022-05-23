@@ -18,7 +18,7 @@ class ProductCategoryController extends Controller
     {
         $productCategories = ProductCategory::get();
         return view('admin.productCategory.index', [
-            'title' => 'Dashboard Pengguna',
+            'title' => 'Product Category Dashboard',
             'productCategories' => $productCategories,
         ]);
     }
