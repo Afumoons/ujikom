@@ -48,13 +48,28 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
                         <li>
-                            <a href="#">Category Product</a>
+                            <a href="javascript: void(0);" class="has-arrow">Product Category</a>
+                            <ul class="sub-menu" aria-expanded="true">
+                                <li><a href="{{ route('admin.product-category.index') }}">Product Category List
+                                    </a>
+                                </li>
+                                <li><a href="{{ route('admin.product-category.create') }}">Create Product Category</a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
-                            <a href="#">@lang('translation.Products')</a>
+                            <a href="javascript: void(0);" class="has-arrow">@lang('translation.Products')</a>
+                            <ul class="sub-menu" aria-expanded="true">
+                                <li><a href="{{ route('admin.product.index') }}">@lang('translation.Products') List </a></li>
+                                <li><a href="{{ route('admin.product.create') }}">Create @lang('translation.Products')</a></li>
+                            </ul>
                         </li>
                         <li>
-                            <a href="#">Users</a>
+                            <a href="javascript: void(0);" class="has-arrow">User</a>
+                            <ul class="sub-menu" aria-expanded="true">
+                                <li><a href="{{ route('admin.user.index') }}">User List </a></li>
+                                <li><a href="{{ route('admin.user.create') }}">Create User</a></li>
+                            </ul>
                         </li>
                         {{-- <li>
                             <a href="javascript: void(0);" class="has-arrow">@lang('translation.Vertical')</a>
