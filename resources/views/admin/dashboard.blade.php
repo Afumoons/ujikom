@@ -5,7 +5,6 @@
 @section('content')
     @component('common-components.breadcrumb')
         @slot('pagetitle')
-            Minible
         @endslot
         @slot('title')
             Dashboard
