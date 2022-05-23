@@ -46,10 +46,14 @@
                                             </div>
                                             <div class="row text-center mt-2">
                                                 <div class="col-sm-6 d-grid">
-                                                    <button type="button"
-                                                        class="btn btn-primary btn-block waves-effect waves-light mt-2 me-1">
-                                                        <i class="uil uil-shopping-cart-alt me-2"></i> Add to cart
-                                                    </button>
+                                                    <x-aire::form method="POST" :action="route('addItem', $product->id)" class=""
+                                                        multipart="true">
+
+                                                        <button type="submit"
+                                                            class="btn btn-primary btn-block waves-effect waves-light mt-2 me-1 w-100">
+                                                            <i class="uil uil-shopping-cart-alt me-2"></i> Add to cart
+                                                        </button>
+                                                    </x-aire::form>
                                                 </div>
                                                 <div class="col-sm-6 d-grid">
                                                     <button type="button"

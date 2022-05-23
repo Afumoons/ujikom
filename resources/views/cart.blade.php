@@ -25,127 +25,71 @@
 
         <div class="row">
             <div class="col-xl-8">
-                <div class="card border shadow-none">
-                    <div class="card-body">
+                @foreach ($cart->items as $item)
+                    <div class="card border shadow-none">
+                        <div class="card-body">
 
-                        <div class="d-flex align-items-start border-bottom pb-3">
-                            <div class="me-4">
-                                <img src="{{ URL::asset('/assets/images/product/img-1.png') }}" alt=""
-                                    class="avatar-lg">
-                            </div>
-                            <div class="flex-1 align-self-center overflow-hidden">
-                                <div>
-                                    <h5 class="text-truncate font-size-16"><a href="ecommerce-product-detail"
-                                            class="text-dark">Nike N012 Running Shoes</a></h5>
-                                    <p class="mb-1">Color : <span class="fw-medium">Gray</span></p>
-                                    <p>Size : <span class="fw-medium">08</span></p>
+                            <div class="d-flex align-items-start border-bottom pb-3">
+                                <div class="me-4">
+                                    <img src="{{ $item->extra_info->image ?? '' }}" alt="" class="avatar-lg">
                                 </div>
-                            </div>
-                            <div class="ml-2">
-                                <ul class="list-inline mb-0 font-size-16">
-                                    <li class="list-inline-item">
-                                        <a href="#" class="text-muted px-2">
-                                            <i class="uil uil-trash-alt"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#" class="text-muted px-2">
-                                            <i class="uil uil-heart"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="mt-3">
-                                        <p class="text-muted mb-2">Price</p>
-                                        <h5 class="font-size-16">$260</h5>
+                                <div class="flex-1 align-self-center overflow-hidden">
+                                    <div>
+                                        <h5 class="text-truncate font-size-16"><a href="ecommerce-product-detail"
+                                                class="text-dark">{{ $item->title }}</a></h5>
+                                        {{-- <p class="mb-1">Color : <span class="fw-medium">Gray</span></p>
+                                        <p>Size : <span class="fw-medium">08</span></p> --}}
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="mt-3">
-                                        <p class="text-muted mb-2">Quantity</p>
-                                        <div style="width: 110px;" class="product-cart-touchspin">
-                                            <input data-toggle="touchspin" type="text" value="02">
+                                <div class="ml-2">
+                                    <ul class="list-inline mb-0 font-size-16">
+                                        <li class="list-inline-item">
+                                            <x-aire::form method="POST" :action="route('removeItem', $item->hash)" class=""
+                                                multipart="true">
+                                                <button type="submit" class="text-muted px-2"
+                                                    style="background: transparent;border:none;"
+                                                    onclick="return confirm('Are you sure deleting this item?')">
+                                                    <i class="uil uil-trash-alt"></i>
+                                                </button>
+                                            </x-aire::form>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="#" class="text-muted px-2">
+                                                <i class="uil uil-heart"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="mt-3">
+                                            <p class="text-muted mb-2">Price</p>
+                                            <h5 class="font-size-16">{{ 'Rp. ' . $item->price }}</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mt-3">
+                                            <p class="text-muted mb-2">Quantity</p>
+                                            <div style="width: 110px;" class="product-cart-touchspin">
+                                                <input data-toggle="touchspin" type="text" value="{{ $item->quantity }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mt-3">
+                                            <p class="text-muted mb-2">Total</p>
+                                            <h5 class="font-size-16">{{ 'Rp. ' . $item->total_price }}</h5>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="mt-3">
-                                        <p class="text-muted mb-2">Total</p>
-                                        <h5 class="font-size-16">$520</h5>
-                                    </div>
-                                </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
-                </div>
-                <!-- end card -->
-
-                <div class="card border shadow-none">
-                    <div class="card-body">
-
-                        <div class="d-flex align-items-start border-bottom pb-3">
-                            <div class="me-4">
-                                <img src="{{ URL::asset('/assets/images/product/img-2.png') }}" alt=""
-                                    class="avatar-lg">
-                            </div>
-                            <div class="flex-1 align-self-center overflow-hidden">
-                                <div>
-                                    <h5 class="text-truncate font-size-16"><a href="ecommerce-product-detail"
-                                            class="text-dark">Adidas Running Shoes</a></h5>
-                                    <p class="mb-1">Color : <span class="fw-medium">Black</span></p>
-                                    <p>Size : <span class="fw-medium">09</span></p>
-                                </div>
-                            </div>
-                            <div class="ml-2">
-                                <ul class="list-inline mb-0 font-size-16">
-                                    <li class="list-inline-item" data-toggle="tooltip" data-placement="top" title="Remove">
-                                        <a href="#" class="text-muted px-2">
-                                            <i class="uil uil-trash-alt"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item" data-toggle="tooltip" data-placement="top"
-                                        title="Add Wishlist">
-                                        <a href="#" class="text-muted px-2">
-                                            <i class="uil uil-heart"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="mt-3">
-                                        <p class="text-muted mb-2">Price</p>
-                                        <h5 class="font-size-16">$260</h5>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="mt-3">
-                                        <p class="text-muted mb-2">Quantity</p>
-                                        <div style="width: 110px;" class="product-cart-touchspin">
-                                            <input data-toggle="touchspin" type="text" value="01">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="mt-3">
-                                        <p class="text-muted mb-2">Total</p>
-                                        <h5 class="font-size-16">$260</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+                @endforeach
                 <!-- end card -->
 
                 <div class="row mt-4">
@@ -175,25 +119,17 @@
                                     <tbody>
                                         <tr>
                                             <td>Sub Total :</td>
-                                            <td class="text-end">$ 780</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Discount : </td>
-                                            <td class="text-end">- $ 78</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Shipping Charge :</td>
-                                            <td class="text-end">$ 25</td>
+                                            <td class="text-end">{{ 'Rp. ' . $cart->subtotal }}</td>
                                         </tr>
                                         <tr>
                                             <td>Estimated Tax : </td>
-                                            <td class="text-end">$ 18.20</td>
+                                            <td class="text-end">{{ 'Rp. ' . $cart->tax_amount }}</td>
                                         </tr>
                                         <tr class="bg-light">
                                             <th>Total :</th>
                                             <td class="text-end">
                                                 <span class="fw-bold">
-                                                    $ 745.2
+                                                    {{ 'Rp. ' . $cart->total }}
                                                 </span>
                                             </td>
                                         </tr>

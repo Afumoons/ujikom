@@ -24,9 +24,10 @@ class CartController extends Controller
      */
     public function index()
     {
+        // dd($this->cart->getDetails()->items);
         return view('cart', [
             'title' => 'Cart',
-            'cart' => $this->cart,
+            'cart' => $this->cart->getDetails(),
         ]);
     }
 
@@ -96,27 +97,28 @@ class CartController extends Controller
         //
     }
 
-    public function addItem(array $attributes = [], $withEvent = true)
+    public function addItem(Request $request, $product = null)
     {
+        $product = Product::findorFail($product);
         $this->cart->addItem([
-            'id'       => 4,
-            'title'    => 'bh',
-            'quantity' => 5,
-            'price'    => 300,
-            'options' => [
-                'size' => [
-                    'label' => 'XL',
-                    'value' => 'XL'
-                ],
-                'color' => [
-                    'label' => 'Red',
-                    'value' => '#f00'
-                ]
-            ],
+            'id'       => $product->id,
+            'title'    => $product->name,
+            'quantity' => 1,
+            'price'    => $product->price,
+            // 'options' => [
+            //     'size' => [
+            //         'label' => 'XL',
+            //         'value' => 'XL'
+            //     ],
+            //     'color' => [
+            //         'label' => 'Red',
+            //         'value' => '#f00'
+            //     ]
+            // ],
             'extra_info' => [
-                'date_time' => [
-                    'added_at' => time(),
-                ]
+                'slug' => $product->slug,
+                'image' => $product->image,
+                'description' => $product->description,
             ]
         ]);
         // ==========================
@@ -149,7 +151,7 @@ class CartController extends Controller
         return redirect(route('cart'));
     }
 
-    public function removeItem($itemHash = 'item_c6611ffd8a942767b421c1736bb643a8')
+    public function removeItem($itemHash)
     {
         $this->cart->removeItem($itemHash);
         return redirect(route('cart'));
