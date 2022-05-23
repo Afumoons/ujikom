@@ -28,6 +28,7 @@ Route::get('cart', [App\Http\Controllers\CartController::class, 'index'])->middl
 Route::post('addItem/{product}', [App\Http\Controllers\CartController::class, 'addItem'])->middleware(['auth'])->name('addItem');
 Route::post('updateItem/{hash}', [App\Http\Controllers\CartController::class, 'updateItem'])->middleware(['auth'])->name('updateItem');
 Route::post('removeItem/{hash}', [App\Http\Controllers\CartController::class, 'removeItem'])->middleware(['auth'])->name('removeItem');
+Route::get('checkout', [App\Http\Controllers\CartController::class, 'checkout'])->middleware(['auth'])->name('checkout');
 
 Route::group(['middleware' => ['auth', 'role:admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::resource('user', Admin\UserController::class)->names('user')->except('show');

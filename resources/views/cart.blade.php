@@ -105,7 +105,7 @@
                     </div> <!-- end col -->
                     <div class="col-sm-6">
                         <div class="text-sm-end mt-2 mt-sm-0">
-                            <a href="ecommerce-checkout" class="btn btn-success">
+                            <a href="{{ route('checkout') }}" class="btn btn-success">
                                 <i class="uil uil-shopping-cart-alt me-1"></i> Checkout </a>
                         </div>
                     </div> <!-- end col -->

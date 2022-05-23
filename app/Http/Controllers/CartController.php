@@ -144,4 +144,12 @@ class CartController extends Controller
         $this->cart->removeItem($itemHash);
         return redirect(route('cart'));
     }
+
+    public function checkout()
+    {
+        return view('checkout', [
+            'title' => 'Checkout',
+            'cart' => $this->cart->getDetails(),
+        ]);
+    }
 }
