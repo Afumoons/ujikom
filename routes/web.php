@@ -24,8 +24,8 @@ Route::get('/admin', [Admin\DashboardController::class, 'index'])->middleware(['
 
 Route::group(['middleware' => ['auth', 'role:admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::resource('user', Admin\UserController::class)->names('user')->except('show');
-    Route::resource('product-category', Admin\ProductCategoryController::class)->names('product-category');
-    Route::resource('product', Admin\ProductController::class)->names('product');
+    Route::resource('product-category', Admin\ProductCategoryController::class)->names('product-category')->except('show');
+    Route::resource('product', Admin\ProductController::class)->names('product')->except('show');
 });
 
 Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index']);
