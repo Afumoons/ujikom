@@ -37,13 +37,13 @@
                                     <tr>
                                         <td>{{ $productCategory->name }}</td>
                                         <td>{{ $productCategory->description }}</td>
-                                        <td> <a href="{{ route('admin.productCategory.edit', $productCategory->id) }}"
+                                        <td> <a href="{{ route('admin.product-category.edit', $productCategory->id) }}"
                                                 class="btn btn-sm btn-warning border-0">
                                                 <i class="fas fa-edit"></i>
                                                 Edit
                                             </a>
                                             <form class="d-inline" method="post"
-                                                action="{{ route('admin.productCategory.destroy', $productCategory->id) }}">
+                                                action="{{ route('admin.product-category.destroy', $productCategory->id) }}">
                                                 @method('delete')
                                                 @csrf
                                                 <button class="btn btn-sm btn-danger border-0"
