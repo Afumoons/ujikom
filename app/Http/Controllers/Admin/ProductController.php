@@ -16,7 +16,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::get();
+        return view('admin.product.index', [
+            'title' => 'Product Dashboard',
+            'products' => $products,
+        ]);
     }
 
     /**
