@@ -3,13 +3,18 @@
 namespace App\Models;
 
 use App\Models\ProductCategory;
+use Jackiedo\Cart\Traits\CanUseCart;
 use Illuminate\Database\Eloquent\Model;
+use Jackiedo\Cart\Contracts\UseCartable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Product extends Model
+class Product extends Model implements UseCartable
 {
-    use HasFactory;
+    use HasFactory, CanUseCart;
+
+    protected $cartTitleField = 'name';
+    protected $cartPriceField = 'price';
 
     protected $fillable = [
         'product_category_id',

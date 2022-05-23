@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -18,9 +19,15 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'root']);
+Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->withoutMiddleware('auth');
 
 Route::get('/admin', [Admin\DashboardController::class, 'index'])->middleware(['auth'])->name('admin.dashboard');
+Route::get('shop', [App\Http\Controllers\HomeController::class, 'shop'])->withoutMiddleware('auth')->name('shop');
+Route::get('shop/{slug}', [App\Http\Controllers\HomeController::class, 'shop_detail'])->withoutMiddleware('auth')->name('shop-detail');
+Route::get('cart', [App\Http\Controllers\CartController::class, 'index'])->middleware(['auth'])->name('cart');
+Route::post('addItem/{product}', [App\Http\Controllers\CartController::class, 'addItem'])->middleware(['auth'])->name('addItem');
+Route::post('updateItem/{hash}', [App\Http\Controllers\CartController::class, 'updateItem'])->middleware(['auth'])->name('updateItem');
+Route::post('removeItem/{hash}', [App\Http\Controllers\CartController::class, 'removeItem'])->middleware(['auth'])->name('removeItem');
 
 Route::group(['middleware' => ['auth', 'role:admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::resource('user', Admin\UserController::class)->names('user')->except('show');
