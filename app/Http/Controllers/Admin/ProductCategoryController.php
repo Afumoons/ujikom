@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\ProductCategory;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreProductCategoryRequest;
 use App\Http\Requests\UpdateProductCategoryRequest;
+use App\Http\Requests\Admin\StoreProductCategoryRequest;
 
 class ProductCategoryController extends Controller
 {
@@ -30,7 +30,9 @@ class ProductCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.productCategory.create', [
+            'title' => 'Create Product Category',
+        ]);
     }
 
     /**
@@ -41,7 +43,11 @@ class ProductCategoryController extends Controller
      */
     public function store(StoreProductCategoryRequest $request)
     {
-        //
+        $validatedData = $request->validated();
+
+        ProductCategory::create($validatedData);
+
+        return redirect()->route('admin.product-category.index')->with('success', 'Product Category has been created.');
     }
 
     /**
