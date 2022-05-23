@@ -25,27 +25,26 @@
                     <h4 class="card-title">Create User</h4>
                     {{-- <p class="card-title-desc">Halaman ini berfungsi untuk membuat pengguna baru.</p> --}}
                     <div class="mb-3 row">
-                        <label for="name" class="col-md-2 col-form-label input-required">Nama Lengkap</label>
+                        <label for="name" class="col-md-2 col-form-label input-required">Name</label>
                         <div class="col-md-10">
-                            <x-aire::input id="name" name="name" :value="old('name', $user->name)" placeholder="Nama pengguna" />
+                            <x-aire::input id="name" name="name" :value="old('name', $user->name)" placeholder="User Name" />
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="email" class="col-md-2 col-form-label input-required">Email</label>
                         <div class="col-md-10">
-                            <x-aire::email id="email" name="email" :value="old('email', $user->email)" placeholder="Email Pengguna" />
+                            <x-aire::email id="email" name="email" :value="old('email', $user->email)" placeholder="User Email" />
                             <x-aire::hidden id="old_email" name="old_email" :value="old('old_email', $user->email)" />
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="password" class="col-md-2 col-form-label input-required">Kata Sandi</label>
+                        <label for="password" class="col-md-2 col-form-label input-required">Password</label>
                         <div class="col-md-10">
-                            <x-aire::password id="password" name="password" :value="old('password')"
-                                placeholder="Kata Sandi Pengguna" />
+                            <x-aire::password id="password" name="password" :value="old('password')" placeholder="User Password" />
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="role" class="col-md-2 col-form-label input-required">Wewenang</label>
+                        <label for="role" class="col-md-2 col-form-label input-required">Role</label>
                         <div class="col-md-10">
                             <select class="form-select select2" id="role" name="role">
                                 <option value="0" selected="selected">

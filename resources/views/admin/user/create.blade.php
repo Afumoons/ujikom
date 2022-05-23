@@ -25,7 +25,7 @@
                     <h4 class="card-title">Create User</h4>
                     {{-- <p class="card-title-desc">Halaman ini berfungsi untuk membuat pengguna baru.</p> --}}
                     <div class="mb-3 row">
-                        <label for="name" class="col-md-2 col-form-label input-required">Nama Lengkap</label>
+                        <label for="name" class="col-md-2 col-form-label input-required">Name</label>
                         <div class="col-md-10">
                             <x-aire::input id="name" name="name" :value="old('name')" placeholder="Nama pengguna" />
                         </div>
@@ -37,14 +37,14 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="password" class="col-md-2 col-form-label input-required">Kata Sandi</label>
+                        <label for="password" class="col-md-2 col-form-label input-required">Password</label>
                         <div class="col-md-10">
                             <x-aire::password id="password" name="password" :value="old('password')"
                                 placeholder="Kata Sandi Pengguna" />
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="role" class="col-md-2 col-form-label input-required">Wewenang</label>
+                        <label for="role" class="col-md-2 col-form-label input-required">Role</label>
                         <div class="col-md-10">
                             <select class="form-select select2" id="role" name="role">
                                 <option value="0" selected="selected">
