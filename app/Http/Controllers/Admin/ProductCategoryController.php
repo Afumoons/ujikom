@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\ProductCategory;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UpdateProductCategoryRequest;
 use App\Http\Requests\Admin\StoreProductCategoryRequest;
+use App\Http\Requests\Admin\UpdateProductCategoryRequest;
 
 class ProductCategoryController extends Controller
 {
@@ -51,17 +51,6 @@ class ProductCategoryController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\ProductCategory  $productCategory
-     * @return \Illuminate\Http\Response
-     */
-    public function show(ProductCategory $productCategory)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\ProductCategory  $productCategory
@@ -69,7 +58,10 @@ class ProductCategoryController extends Controller
      */
     public function edit(ProductCategory $productCategory)
     {
-        //
+        return view('admin.productCategory.edit', [
+            'title' => 'Edit Product Category',
+            'productCategory' => $productCategory,
+        ]);
     }
 
     /**
@@ -81,7 +73,11 @@ class ProductCategoryController extends Controller
      */
     public function update(UpdateProductCategoryRequest $request, ProductCategory $productCategory)
     {
-        //
+        $validatedData = $request->validated();
+
+        $productCategory->update($validatedData);
+
+        return redirect()->route('admin.product-category.index')->with('success', 'Product Category has been updated.');
     }
 
     /**
