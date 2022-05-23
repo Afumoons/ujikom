@@ -149,26 +149,33 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <a class="dropdown-item" href="#"><i
-                            class="uil uil-user-circle font-size-18 align-middle text-muted me-1"></i> <span
-                            class="align-middle">@lang('translation.View_Profile')</span></a>
-                    <a class="dropdown-item" href="#"><i
-                            class="uil uil-wallet font-size-18 align-middle me-1 text-muted"></i> <span
-                            class="align-middle">@lang('translation.My_Wallet')</span></a>
-                    <a class="dropdown-item d-block" href="#"><i
-                            class="uil uil-cog font-size-18 align-middle me-1 text-muted"></i> <span
-                            class="align-middle">@lang('translation.Settings')</span> <span
-                            class="badge bg-soft-success rounded-pill mt-1 ms-2">03</span></a>
-                    <a class="dropdown-item" href="#"><i
-                            class="uil uil-lock-alt font-size-18 align-middle me-1 text-muted"></i> <span
-                            class="align-middle">@lang('translation.Lock_screen')</span></a>
-                    <a class="dropdown-item"
-                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
-                            class="uil uil-sign-out-alt font-size-18 align-middle me-1 text-muted"></i> <span
-                            class="align-middle">@lang('translation.Sign_out')</span></a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
+                    @guest
+                        <a class="dropdown-item" href="{{ route('login') }}"><i
+                                class="uil uil-user-circle font-size-18 align-middle text-muted me-1"></i> <span
+                                class="align-middle">Login</span></a>
+                    @endguest
+                    @auth
+                        <a class="dropdown-item" href="#"><i
+                                class="uil uil-user-circle font-size-18 align-middle text-muted me-1"></i> <span
+                                class="align-middle">@lang('translation.View_Profile')</span></a>
+                        <a class="dropdown-item" href="#"><i
+                                class="uil uil-wallet font-size-18 align-middle me-1 text-muted"></i> <span
+                                class="align-middle">@lang('translation.My_Wallet')</span></a>
+                        <a class="dropdown-item d-block" href="#"><i
+                                class="uil uil-cog font-size-18 align-middle me-1 text-muted"></i> <span
+                                class="align-middle">@lang('translation.Settings')</span> <span
+                                class="badge bg-soft-success rounded-pill mt-1 ms-2">03</span></a>
+                        <a class="dropdown-item" href="#"><i
+                                class="uil uil-lock-alt font-size-18 align-middle me-1 text-muted"></i> <span
+                                class="align-middle">@lang('translation.Lock_screen')</span></a>
+                        <a class="dropdown-item"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
+                                class="uil uil-sign-out-alt font-size-18 align-middle me-1 text-muted"></i> <span
+                                class="align-middle">@lang('translation.Sign_out')</span></a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    @endauth
                 </div>
             </div>
 
@@ -189,8 +196,8 @@
                     <ul class="navbar-nav">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('index') }}">
-                                <i class="uil-home-alt me-2"></i> @lang('translation.Dashboard')
+                            <a class="nav-link" href="{{ route('root') }}">
+                                <i class="uil-home-alt me-2"></i> Home
                             </a>
                         </li>
                         <li class="nav-item">
