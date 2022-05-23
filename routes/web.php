@@ -25,10 +25,8 @@ Route::get('/admin', [Admin\DashboardController::class, 'index'])->middleware(['
 Route::get('shop', [App\Http\Controllers\HomeController::class, 'shop'])->withoutMiddleware('auth')->name('shop');
 Route::get('shop/{slug}', [App\Http\Controllers\HomeController::class, 'shop_detail'])->withoutMiddleware('auth')->name('shop-detail');
 Route::get('cart', [App\Http\Controllers\CartController::class, 'index'])->middleware(['auth'])->name('cart');
-// Route::get('cart', [App\Http\Controllers\CartController::class, 'coba'])->middleware(['auth'])->name('cart');
 Route::post('addItem/{product}', [App\Http\Controllers\CartController::class, 'addItem'])->middleware(['auth'])->name('addItem');
-Route::get('getItem', [App\Http\Controllers\CartController::class, 'getItem'])->middleware(['auth'])->name('getItem');
-Route::get('updateItem', [App\Http\Controllers\CartController::class, 'updateItem'])->middleware(['auth'])->name('updateItem');
+Route::post('updateItem/{hash}', [App\Http\Controllers\CartController::class, 'updateItem'])->middleware(['auth'])->name('updateItem');
 Route::post('removeItem/{hash}', [App\Http\Controllers\CartController::class, 'removeItem'])->middleware(['auth'])->name('removeItem');
 
 Route::group(['middleware' => ['auth', 'role:admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {

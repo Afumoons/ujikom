@@ -130,23 +130,11 @@ class CartController extends Controller
         // ]);
         return redirect(route('cart'));
     }
-    public function getItem()
-    {
-        $items = $this->cart->getItems();
-        foreach ($items as $key => $item) {
-            dd($item);
-        }
-    }
 
-    public function updateItem($itemHash = 'item_03fa81b001265cf0e5a1048fd47c01b3')
+    public function updateItem(Request $request, $itemHash)
     {
-        //item_03fa81b001265cf0e5a1048fd47c01b3
         $this->cart->updateItem($itemHash, [
-            'title'      => 'New title',
-            'quantity'   => 2,
-            'extra_info' => [
-                'date_time.updated_at' => time()
-            ]
+            'quantity'   => $request->quantity,
         ]);
         return redirect(route('cart'));
     }
@@ -155,12 +143,5 @@ class CartController extends Controller
     {
         $this->cart->removeItem($itemHash);
         return redirect(route('cart'));
-    }
-
-    public function coba()
-    {
-        // dd($this->cart->getDetails()->items);
-        dd($this->cart->getDetails());
-        // $variable = $this->cart->get('item');
     }
 }

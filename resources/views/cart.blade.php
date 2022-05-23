@@ -73,9 +73,15 @@
                                     <div class="col-md-4">
                                         <div class="mt-3">
                                             <p class="text-muted mb-2">Quantity</p>
-                                            <div style="width: 110px;" class="product-cart-touchspin">
-                                                <input data-toggle="touchspin" type="text" value="{{ $item->quantity }}">
-                                            </div>
+                                            <x-aire::form method="POST" :action="route('updateItem', $item->hash)" class=""
+                                                multipart="true">
+                                                <div style="width: 110px;" class="product-cart-touchspin mb-2">
+                                                    <input data-toggle="touchspin" type="text" name="quantity"
+                                                        value="{{ $item->quantity }}">
+                                                </div>
+                                                <button type="submit" class="btn btn-primary" style="width: 110px;">
+                                                    Save </button>
+                                            </x-aire::form>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
