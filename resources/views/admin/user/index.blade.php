@@ -49,9 +49,9 @@
                                                 @method('delete')
                                                 @csrf
                                                 <button class="btn btn-sm btn-danger border-0"
-                                                    onclick="return confirm('Apakah anda yakin ingin menghapus layanan ini?')">
+                                                    onclick="return confirm('Are you sure deleting this data?')">
                                                     <i class="fas fa-trash"></i>
-                                                    Hapus
+                                                    Delete
                                                 </button>
                                             </form>
                                         </td>
