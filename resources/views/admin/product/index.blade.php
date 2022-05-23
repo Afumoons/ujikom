@@ -39,7 +39,7 @@
                                     <tr>
                                         <td>{{ $product->name }}</td>
                                         <td>{{ $product->stock }}</td>
-                                        <td>{{ $product->price }}</td>
+                                        <td>{{ 'Rp. ' . $product->price }}</td>
                                         <td>{{ $product->description }}</td>
                                         <td> <a href="{{ route('admin.product.edit', $product->id) }}"
                                                 class="btn btn-sm btn-warning border-0">
