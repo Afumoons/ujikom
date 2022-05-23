@@ -23,7 +23,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'root']);
 Route::get('/admin', [Admin\DashboardController::class, 'index'])->middleware(['auth'])->name('admin.dashboard');
 
 Route::group(['middleware' => ['auth', 'role:admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
-    Route::resource('user', Admin\UserController::class)->names('user');
+    Route::resource('user', Admin\UserController::class)->names('user')->except('show');
     Route::resource('product-category', Admin\ProductCategoryController::class)->names('product-category');
     Route::resource('product', Admin\ProductController::class)->names('product');
 });
