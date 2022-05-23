@@ -17,6 +17,7 @@
 
     <div class="row">
         <div class="col-lg-12">
+            <x-alert />
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title mb-4">User List</h4>
