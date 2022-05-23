@@ -69,23 +69,22 @@
     <script src="{{ URL::asset('/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
 
     <script src="{{ URL::asset('/assets/js/pages/dashboard.init.js') }}"></script>
+@endpush
+@push('script')
+    <script src="{{ url('/vendor/laravel-filemanager/js/stand-alone-button.js') }}"></script>
+    <script>
+        $('#lfm').filemanager('image');
+    </script>
 
-    @push('script')
-        <script src="{{ url('/vendor/laravel-filemanager/js/stand-alone-button.js') }}"></script>
-        <script>
-            $('#lfm').filemanager('image');
-        </script>
-
-        <script>
-            const button2 = document.querySelector('#lfm');
-            const thumbnail2 = document.querySelector('#thumbnail2');
-            const linkholder = document.querySelector('#linkholder');
-            const holder = document.querySelector('#holder');
-            button2.addEventListener('mouseleave', function() {
-                holder.src = thumbnail2.value;
-                // change linkholder href to thumbnail2 value
-                linkholder.href = thumbnail2.value;
-            });
-        </script>
-    @endpush
+    <script>
+        const button2 = document.querySelector('#lfm');
+        const thumbnail2 = document.querySelector('#thumbnail2');
+        const linkholder = document.querySelector('#linkholder');
+        const holder = document.querySelector('#holder');
+        button2.addEventListener('mouseleave', function() {
+            holder.src = thumbnail2.value;
+            // change linkholder href to thumbnail2 value
+            linkholder.href = thumbnail2.value;
+        });
+    </script>
 @endpush
