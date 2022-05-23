@@ -54,4 +54,8 @@ class HomeController extends Controller
     {
         return view('form-repeater');
     }
+    public function shop()
+    {
+        dd('duar');
+    }
 }

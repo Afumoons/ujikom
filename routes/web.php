@@ -22,6 +22,7 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'root']);
 
 Route::get('/admin', [Admin\DashboardController::class, 'index'])->middleware(['auth'])->name('admin.dashboard');
+Route::get('shop', [App\Http\Controllers\HomeController::class, 'shop'])->withoutMiddleware('auth')->name('shop');
 Route::get('cart', [App\Http\Controllers\CartController::class, 'coba'])->middleware(['auth'])->name('cart');
 Route::get('addItem', [App\Http\Controllers\CartController::class, 'addItem'])->middleware(['auth'])->name('addItem');
 Route::get('getItem', [App\Http\Controllers\CartController::class, 'getItem'])->middleware(['auth'])->name('getItem');
